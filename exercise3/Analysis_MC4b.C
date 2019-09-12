@@ -70,7 +70,7 @@ for (Int_t i=0;i<a_->GetEntries();i++) {
 
 }//for entries
 
-TFile *f = new TFile("DS_MC_4b.root", "RECREATE");
+TFile *f = new TFile("DStar_4b_MC.root", "RECREATE");
 
 //write your histos here
 

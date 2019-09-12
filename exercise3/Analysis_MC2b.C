@@ -190,7 +190,7 @@ for (Int_t i=0;i<a_->GetEntries();i++) {
  }//if D0 mass
 }//for entries
 
-TFile *f = new TFile("DS_2b_MC.root", "RECREATE");
+TFile *f = new TFile("DStar_2b_MC.root", "RECREATE");
 deltaMass->Write();
 tot_gen->Write();
 
