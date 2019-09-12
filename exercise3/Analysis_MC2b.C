@@ -23,7 +23,7 @@ using namespace std;
 
 void Analysis_MC2b(){
 
-char *file_DATA=(char *)"/home/common/LongExercises/Dstar/ntuples/DS2b_MC.root";
+char *file_DATA=(char *)"/home/home4/institut_1b/jschulte/public/DS2b_MC.root";
 TFile *DATA  =new TFile (file_DATA);
 
 TTree *a_ = (TTree*)DATA->Get("demo/Analysis");
