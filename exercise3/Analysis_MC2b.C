@@ -23,7 +23,8 @@ using namespace std;
 
 void Analysis_MC2b(){
 
-char *file_DATA=(char *)"/home/home4/institut_1b/jschulte/public/DS2b_MC.root";
+//char *file_DATA=(char *)"/home/home4/institut_1b/jschulte/public/DS2b_MC.root";
+char *file_DATA=(char *)"/home/home4/institut_1b/jschulte/CMSPOS/CMSSW_10_2_16_UL/src/Tracking/exercise3/DS2b_MC_Plus.root";
 TFile *DATA  =new TFile (file_DATA);
 
 TTree *a_ = (TTree*)DATA->Get("demo/Analysis");

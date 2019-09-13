@@ -68,27 +68,28 @@ using namespace RooFit ;
 RooRealVar deltaM("deltaM","diff (GeV)", 0.14,0.158) ;
   
 // --- Parameters ---
-RooRealVar sigma("sigma","width of gaussian", 0.0007, 0.0001, 0.003); 
-RooRealVar mean("mean","mean of gaussian",0.1455, 0.14, 0.15) ;
+RooRealVar sigma("sigma","width of gaussian",0.0006, 0.0003, 0.001) ;
+RooRealVar mean("mean","mean of gaussian",0.1454, 0.14, 0.16) ;
 
-RooRealVar sigma2("sigma2","width of gaussian",0.0006, 0.0002, 0.005) ; 
+RooRealVar sigma2("sigma2","width of gaussian",0.0006, 0.0004, 0.0015) ;
    
 // --- Build Gaussian PDF ---
 RooGaussian sign("sign","signal PDF",deltaM,mean,sigma) ;
 RooGaussian sign2("sign2","signal PDF",deltaM,mean,sigma2) ;
-RooRealVar fr("fr","width of gaussian",0.999, 0.000, 1.00) ;
+RooRealVar fr("fr","width of gaussian",0.5, 0., 1) ;
 RooAddPdf sig("sig", "g1+g2", RooArgSet(sign, sign2),fr);
 
 RooRealVar m0("m0", "m0", 0.1396);
-RooRealVar p0("p0","p0", 0.0002, 0., 1); 
-RooRealVar p1("p1","p1",10.,0.,50.) ;
-RooRealVar p2("p2","p2",4.0,-100.,100.) ; 
-RooGenericPdf bkg("bkg","(1-exp(-(deltaM-m0)/p0))*(deltaM/m0)^p1 + p2*(deltaM/m0 - 1)",RooArgSet(m0,deltaM,p0,p1,p2)) ;
+RooRealVar p0("p0","p0",0.003,0.0002,0.0042);
+RooRealVar p1("p1","p1",4, 0., 7.);
+RooRealVar p2("p2","p2",6,0.,8.);
+RooGenericPdf bkg("bkg","(1-exp(-(deltaM-m0)/p0))*(deltaM/m0)^p1 + p2*(deltaM/m0 - 1)",RooArgSet(m0,deltaM,p0,p1,p2));
 
-
-RooRealVar nsig("nsig","#signal events",50000,0.,100000) ;
-RooRealVar nbkg("nbkg","#background events",5000,0.,40000) ;
+RooRealVar nsig("nsig","#signal events",8000,0,150000) ;
+RooRealVar nbkg("nbkg","#background events",15000,0,2000000) ;
 RooAddPdf model("model","g+a",RooArgList(sig,bkg),RooArgList(nsig,nbkg)) ;
+
+
 
 TFile *f00 = new TFile("DS_4b_MC.root");
 TString name = "input_file";
